@@ -55,12 +55,11 @@ public class AlbumOrmDao {
             @PathVariable("albumId") Integer id,
             @RequestBody() Album newAlbum) {
         Album album = this.findAlbumById(id);
-        album.setName(newAlbum.getName());
-        album.setSeats(newAlbum.getSeats());
-        album.setSemester(newAlbum.getSemester());
-        album.setYear(newAlbum.getYear());
-        album.setOnline(newAlbum.getOnline());
-//        album.setStartDate(newAlbum.getStartDate());
+        album.setAlbumName(newAlbum.getAlbumName());
+        album.setReleaseDate(newAlbum.getReleaseDate());
+        album.setArtist(newAlbum.getArtist());
+        album.setNumberSongs(newAlbum.getNumberSongs());
+        album.setTracks(newAlbum.getTracks());
         return albumRepository.save(album);
     }
 

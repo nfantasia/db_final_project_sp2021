@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class ArtistsOrmDao {
+public class ArtistOrmDao {
     @Autowired
     ArtistRepository artistRepository;
 
@@ -34,12 +34,13 @@ public class ArtistsOrmDao {
             @PathVariable("artistId") Integer id,
             @RequestBody() Artist newArtist) {
         Artist artist = this.findArtistById(id);
-        Artist.setName(newArtist.getName());
-        Artist.setSeats(newArtist.getSeats());
-        Artist.setSemester(newArtist.getSemester());
-        Artist.setYear(newArtist.getYear());
-        Artist.setOnline(newArtist.getOnline());
-        return artistRepository.save(section);
+        Artist.setFirstName(newArtist.getFirstName());
+        Artist.setLastName(newArtist.getLastName());
+        Artist.setUsername(newArtist.getUsername());
+        Artist.setPassword(newArtist.getPassword());
+        Artist.setEmail(newArtist.getEmail());
+        Artist.setDateOfBirth(newArtist.getDateOfBirth());
+        return artistRepository.save(artist);
     }
 
     @DeleteMapping("/api/artistId/{artistId}")

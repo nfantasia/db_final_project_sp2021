@@ -33,10 +33,10 @@ public class ArtistJdbcDao {
         connection.close();
     }
     
-    public User findUserById(Integer id) throws SQLException, ClassNotFoundException {
+    public Artist findArtistById(Integer id) throws SQLException, ClassNotFoundException {
         Artist artists = null;
         connection = getConnection();
-        statement = connection.prepareStatement(FIND_USER_BY_ID);
+        statement = connection.prepareStatement(FIND_ARTIST_BY_ID);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
         if(resultSet.next()) {
@@ -46,7 +46,7 @@ public class ArtistJdbcDao {
                     resultSet.getString("first_name"),
                     resultSet.getString("last_name"),
                     resultSet.getString("email"),
-                    resultSet.getDateOfBirth("date_of_birth")
+                    resultSet.getDate("date_of_birth")
             );
         }
         closeConnection(connection);
@@ -85,7 +85,7 @@ public class ArtistJdbcDao {
         statement = connection.prepareStatement(FIND_ALL_ARTISTS);
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
-            Artist user = new Artist(
+            Artist artist = new Artist(
                     resultSet.getString("username"),
                     resultSet.getString("password"),
                     resultSet.getString("first_name"),
@@ -93,7 +93,7 @@ public class ArtistJdbcDao {
                     resultSet.getString("email")
                     resultSet.getDate("date_of_birth")
             );
-            artists.add(artists);
+            artists.add(artist);
         }
         closeConnection(connection);
         return artists;

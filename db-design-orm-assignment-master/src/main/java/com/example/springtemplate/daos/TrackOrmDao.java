@@ -1,8 +1,8 @@
 package com.example.springtemplate.daos;
 
-import com.example.springtemplate.models.Artist;
+import com.example.springtemplate.models.Album;
 import com.example.springtemplate.models.Track;
-import com.example.springtemplate.repositories.ArtistRepository;
+import com.example.springtemplate.repositories.AlbumRepository;
 import com.example.springtemplate.repositories.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,21 +22,21 @@ public class TrackOrmDao {
         return trackRepository.save(track);
     }
 
-    @PostMapping("/api/artists/{artistId}/tracks")
-    public Track createTrackForArtist(
-            @PathVariable("artistId") Integer cid,
+    @PostMapping("/api/albums/{albumId}/tracks")
+    public Track createTrackForAlbum(
+            @PathVariable("albumId") Integer cid,
             @RequestBody Track track) {
         track = trackRepository.save(track);
-        Artist artist = artistRepository.findById(cid).get();
-        track.setArtist(artist);
+        Album album = albumRepository.findById(cid).get();
+        track.setAlbum(album);
         return trackRepository.save(track);
     }
 
-    @GetMapping("/api/artists/{cid}/tracks")
-    public List<Track> findTracksForArtist(
-            @PathVariable("cid") Integer artistId) {
-        Artist artist = artistRepository.findById(artistId).get();
-        return artist.getTracks();
+    @GetMapping("/api/albums/{cid}/tracks")
+    public List<Track> findTracksForAlbum(
+            @PathVariable("cid") Integer albumId) {
+        Album album = albumRepository.findById(albumId).get();
+        return album.getTracks();
     }
 
     @GetMapping("/api/tracks")
@@ -55,12 +55,10 @@ public class TrackOrmDao {
             @PathVariable("trackId") Integer id,
             @RequestBody() Track newTrack) {
         Track track = this.findTrackById(id);
-        track.setName(newTrack.getName());
-        track.setSeats(newTrack.getSeats());
-        track.setSemester(newTrack.getSemester());
-        track.setYear(newTrack.getYear());
-        track.setOnline(newTrack.getOnline());
-//        track.setStartDate(newTrack.getStartDate());
+        track.setTitle(newTrack.getTitle());
+        track.setLength(newTrack.getLength());
+        track.setGenre(newTrack.getGenre());
+        track.setAlbum(newTrack.getAlbum());
         return trackRepository.save(track);
     }
 

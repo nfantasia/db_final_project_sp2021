@@ -1,7 +1,10 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="artists")
@@ -14,7 +17,10 @@ public class Artist {
     private String username;
     private String password;
     private String email;
-    private Date dataOfBirth;
+    private Date dateOfBirth;
+    @OneToMany(mappedBy = "artist")
+    @JsonIgnore
+    private List<Album> albums;
 
     public Integer getId() {
         return id;
@@ -68,8 +74,16 @@ public class Artist {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dataOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
     }
 
     public Artist(String username, String password, String first_name, String last_name, String email, Date dateOfBirth) {
@@ -78,7 +92,7 @@ public class Artist {
         this.firstName = first_name;
         this.lastName = last_name;
         this.email = email;
-        this.dataOfBirth = dateOfBirth;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Artist() {}

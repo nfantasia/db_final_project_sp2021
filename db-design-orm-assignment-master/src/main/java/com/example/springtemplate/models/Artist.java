@@ -64,12 +64,12 @@ public class Artist {
         this.email = email;
     }
 
-    public Date getDataOfBirth() {
-        return dataOfBirth;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDataOfBirth(Date dataOfBirth) {
-        this.dataOfBirth = dataOfBirth;
+    public void setDateOfBirth(Date dataOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Artist(String username, String password, String first_name, String last_name, String email, Date dateOfBirth) {

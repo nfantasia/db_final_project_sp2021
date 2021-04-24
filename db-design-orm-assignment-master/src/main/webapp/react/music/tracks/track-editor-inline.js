@@ -1,8 +1,8 @@
 const {useState, useEffect } = React;
 const {Link} = window.ReactRouterDOM;
 
-const SectionEditorInline = ({section, deleteSection, updateSection}) => {
-    const [sectionCopy, setSectionCopy] = useState(section)
+const TrackEditorInline = ({track, deleteTrack, updateTrack}) => {
+    const [trackCopy, setTrackCopy] = useState(track)
     const [editing, setEditing] = useState(false)
     return(
         <div>
@@ -12,21 +12,21 @@ const SectionEditorInline = ({section, deleteSection, updateSection}) => {
                     <div className="col">
                         <input
                             className="form-control"
-                            value={sectionCopy.name}
-                            onChange={(e)=>setSectionCopy(sectionCopy => ({...sectionCopy, name: e.target.value}))}/>
+                            value={trackCopy.name}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, name: e.target.value}))}/>
                     </div>
                     <div className="col">
                         <input
                             type="number"
                             className="form-control"
-                            value={sectionCopy.seats}
-                            onChange={(e)=>setSectionCopy(sectionCopy => ({...sectionCopy, seats: parseInt(e.target.value)}))}/>
+                            value={trackCopy.seats}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, seats: parseInt(e.target.value)}))}/>
                     </div>
                     <div className="col">
                         <select
                             className="form-control"
-                            value={sectionCopy.semester}
-                            onChange={(e)=>setSectionCopy(sectionCopy => ({...sectionCopy, semester: e.target.value}))}>
+                            value={trackCopy.semester}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, semester: e.target.value}))}>
                             <option>FALL</option>
                             <option>SPRING</option>
                             <option>SUMMER</option>
@@ -36,15 +36,15 @@ const SectionEditorInline = ({section, deleteSection, updateSection}) => {
                         <input
                             type="number"
                             className="form-control"
-                            value={sectionCopy.year}
-                            onChange={(e)=>setSectionCopy(sectionCopy => ({...sectionCopy, year: parseInt(e.target.value)}))}/>
+                            value={trackCopy.year}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, year: parseInt(e.target.value)}))}/>
                     </div>
                     <div className="col">
                         <label>
                         <input
                             type="checkbox"
-                            checked={sectionCopy.online}
-                            onChange={(e)=>setSectionCopy(sectionCopy => ({...sectionCopy, online: e.target.checked}))}/>
+                            checked={trackCopy.online}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, online: e.target.checked}))}/>
                             &nbsp;
                             Online
                         </label>
@@ -53,19 +53,19 @@ const SectionEditorInline = ({section, deleteSection, updateSection}) => {
                         <input
                             type="date"
                             className="form-control"
-                            value={sectionCopy.startDate}
-                            onChange={(e)=>setSectionCopy(sectionCopy => ({...sectionCopy, startDate: e.target.value}))}/>
+                            value={trackCopy.startDate}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, startDate: e.target.value}))}/>
                     </div>
                     <div className="col-2">
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
                                setEditing(false)
-                               updateSection(sectionCopy.id, sectionCopy)
+                               updateTrack(trackCopy.id, trackCopy)
                            }}></i>
                         <i className="fas fa-2x fa-undo float-right margin-left-10px"
                            onClick={() => setEditing(false)}></i>
                         <i className="fas fa-2x fa-trash float-right margin-left-10px"
-                           onClick={() => deleteSection(section.id)}></i>
+                           onClick={() => deleteTrack(track.id)}></i>
                     </div>
                 </div>
             }
@@ -73,29 +73,29 @@ const SectionEditorInline = ({section, deleteSection, updateSection}) => {
                 !editing &&
                 <div className="row">
                     <div className="col">
-                        <Link to={`/sections/${sectionCopy.id}`}>
-                            {sectionCopy.name}
+                        <Link to={`/tracks/${trackCopy.id}`}>
+                            {trackCopy.name}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/sections/${sectionCopy.id}`}>
-                            {sectionCopy.seats}
+                        <Link to={`/tracks/${trackCopy.id}`}>
+                            {trackCopy.seats}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/sections/${sectionCopy.id}`}>
-                            {sectionCopy.semester}
+                        <Link to={`/tracks/${trackCopy.id}`}>
+                            {trackCopy.semester}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/sections/${sectionCopy.id}`}>
-                            {sectionCopy.year}
+                        <Link to={`/tracks/${trackCopy.id}`}>
+                            {trackCopy.year}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/sections/${sectionCopy.id}`}>
-                            {sectionCopy.online && 'Online'}
-                            {!sectionCopy.online && 'On Campus'}
+                        <Link to={`/tracks/${trackCopy.id}`}>
+                            {trackCopy.online && 'Online'}
+                            {!trackCopy.online && 'On Campus'}
                         </Link>
                     </div>
                     <div className="col-1">
@@ -108,4 +108,4 @@ const SectionEditorInline = ({section, deleteSection, updateSection}) => {
     )
 }
 
-export default SectionEditorInline;
+export default TrackEditorInline;

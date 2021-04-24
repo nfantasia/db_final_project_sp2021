@@ -1,43 +1,43 @@
-import courseService from "./course-service"
+import albumService from "./album-service"
 
 const {useState, useEffect} = React
 const {useParams, useHistory} = window.ReactRouterDOM;
-const COURSE_URL = "http://localhost:8080/api/courses"
+const ALBUM_URL = "http://localhost:8080/api/albums"
 
-const CourseEditorForm = () => {
-    const [course, setCourse] = useState({})
+const AlbumEditorForm = () => {
+    const [album, setAlbum] = useState({})
     const {id} = useParams()
     const history = useHistory()
     useEffect(() => {
-        findCourseById(id)
+        findAlbumById(id)
     }, []);
-    const findCourseById = (id) =>
-        courseService.findCourseById(id)
-            .then(course => setCourse(course))
-    const updateCourse = (id, newCourse) =>
-        courseService.updateCourse(id, newCourse)
+    const findAlbumById = (id) =>
+        albumService.findAlbumById(id)
+            .then(album => setAlbum(album))
+    const updateAlbum = (id, newAlbum) =>
+        albumService.updateAlbum(id, newAlbum)
             .then(() => history.goBack())
-    const deleteCourse = (id) =>
-        courseService.deleteCourse(id)
+    const deleteAlbum = (id) =>
+        albumService.deleteAlbum(id)
             .then(() => history.goBack())
     
     return (
         <div>
             <h2>
-                Course Editor
+                Album Editor
             </h2>
             <label>Id</label>
             <input
                 className="form-control margin-bottom-10px"
                 readOnly={true}
-                value={course.id}/>
+                value={album.id}/>
             <label>Title</label>
             <input
                 className="form-control margin-bottom-10px"
-                onChange={(e) => setCourse(course => ({...course, title: e.target.value}))}
-                value={course.title}/>
+                onChange={(e) => setAlbum(album => ({...album, name: e.target.value}))}
+                value={album.name}/>
             <button
-                onClick={() => updateCourse(course.id, course)}
+                onClick={() => updateAlbum(album.id, album)}
                 className="btn btn-success btn-block">Save</button>
             <button
                 onClick={() => {
@@ -45,10 +45,10 @@ const CourseEditorForm = () => {
                 }}
                 className="btn btn-danger btn-block margin-left-10px">Cancel</button>
             <button
-                onClick={() => deleteCourse(course.id)}
+                onClick={() => deleteAlbum(album.id)}
                 className="btn btn-danger btn-block margin-left-10px">Delete</button>
         </div>
     )
 }
 
-export default CourseEditorForm
+export default AlbumEditorForm

@@ -1,8 +1,8 @@
 const {useState, useEffect} = React
 const {useParams} = window.ReactRouterDOM;
-const COURSE_URL = "http://localhost:8080/api/courses"
+const ALBUM_URL = "http://localhost:8080/api/albums"
 
-const CourseEditor = (
+const AlbumEditor = (
     {
         schema = {
             title: {type: "text"},
@@ -15,12 +15,12 @@ const CourseEditor = (
         findById(id)
     }, []);
     const findById = (id) =>
-        fetch(`${COURSE_URL}/${id}`)
+        fetch(`${ALBUM_URL}/${id}`)
             .then(response => response.json())
             .then(item => setItem(item))
     return (
         <div>
-            <h2>Course Editor {id}</h2>
+            <h2>Album Editor {id}</h2>
             {JSON.stringify(item)}
             <ul className="list-group">
                 {
@@ -44,4 +44,4 @@ const CourseEditor = (
     )
 }
 
-export default CourseEditor
+export default AlbumEditor

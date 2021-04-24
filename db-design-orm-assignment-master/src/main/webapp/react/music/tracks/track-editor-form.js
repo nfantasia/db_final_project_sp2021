@@ -1,51 +1,51 @@
-import sectionService from "./section-service"
+import trackService from "./track-service"
 
 const {useState, useEffect} = React
 const {useParams, useHistory} = window.ReactRouterDOM;
 
-const SectionEditorForm = () => {
-    const [section, setSection] = useState({})
-    const {sectionId} = useParams()
+const TrackEditorForm = () => {
+    const [track, setTrack] = useState({})
+    const {trackId} = useParams()
     const history = useHistory()
     useEffect(() => {
-        findSectionById(sectionId)
+        findTrackById(trackId)
     }, []);
-    const findSectionById = (id) =>
-        sectionService.findSectionById(id)
-            .then(section => setSection(section))
-    const updateSection = (id, newSection) =>
-        sectionService.updateSection(id, newSection)
+    const findTrackById = (id) =>
+        trackService.findTrackById(id)
+            .then(track => setTrack(track))
+    const updateTrack = (id, newTrack) =>
+        trackService.updateTrack(id, newTrack)
             .then(() => history.goBack())
-    const deleteSection = (id) =>
-        sectionService.deleteSection(id)
+    const deleteTrack = (id) =>
+        trackService.deleteTrack(id)
             .then(() => history.goBack())
     
     return (
         <div>
             <h2>
-                Section Editor
+                Track Editor
             </h2>
             <label>Id</label>
             <input
                 className="form-control margin-bottom-10px"
                 readOnly={true}
-                value={section.id}/>
+                value={track.id}/>
             <label>Name</label>
             <input
                 className="form-control margin-bottom-10px"
-                onChange={(e) => setSection(section => ({...section, name: e.target.value}))}
-                value={section.name}/>
+                onChange={(e) => setTrack(track => ({...track, name: e.target.value}))}
+                value={track.name}/>
             <label>Seats</label>
             <input
                 type="number"
                 className="form-control margin-bottom-10px"
-                value={section.seats}
-                onChange={(e)=>setSection(section => ({...section, seats: parseInt(e.target.value)}))}/>
+                value={track.seats}
+                onChange={(e)=>setTrack(track => ({...track, seats: parseInt(e.target.value)}))}/>
             <label>Semester</label>
             <select
                 className="form-control margin-bottom-10px"
-                value={section.semester}
-                onChange={(e)=>setSection(section => ({...section, semester: e.target.value}))}>
+                value={track.semester}
+                onChange={(e)=>setTrack(track => ({...track, semester: e.target.value}))}>
                 <option>FALL</option>
                 <option>SPRING</option>
                 <option>SUMMER</option>
@@ -54,18 +54,18 @@ const SectionEditorForm = () => {
             <input
                 type="number"
                 className="form-control margin-bottom-10px"
-                value={section.year}
-                onChange={(e)=>setSection(section => ({...section, year: parseInt(e.target.value)}))}/>
+                value={track.year}
+                onChange={(e)=>setTrack(track => ({...track, year: parseInt(e.target.value)}))}/>
             <label className="margin-bottom-10px">
             <input
                 type="checkbox"
-                checked={section.online}
-                onChange={(e)=>setSection(section => ({...section, online: e.target.checked}))}/>
+                checked={track.online}
+                onChange={(e)=>setTrack(track => ({...track, online: e.target.checked}))}/>
                 &nbsp;Online
             </label>
             <br/>
             <button
-                onClick={() => updateSection(section.id, section)}
+                onClick={() => updateTrack(track.id, track)}
                 className="btn btn-success btn-block">Save</button>
             <button
                 onClick={() => {
@@ -73,10 +73,10 @@ const SectionEditorForm = () => {
                 }}
                 className="btn btn-danger btn-block margin-left-10px">Cancel</button>
             <button
-                onClick={() => deleteSection(section.id)}
+                onClick={() => deleteTrack(track.id)}
                 className="btn btn-danger btn-block margin-left-10px">Delete</button>
         </div>
     )
 }
 
-export default SectionEditorForm
+export default TrackEditorForm

@@ -12,32 +12,34 @@ const TrackEditorInline = ({track, deleteTrack, updateTrack}) => {
                     <div className="col">
                         <input
                             className="form-control"
-                            value={trackCopy.name}
-                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, name: e.target.value}))}/>
+                            value={trackCopy.title}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, title: e.target.value}))}/>
                     </div>
                     <div className="col">
                         <input
                             type="number"
                             className="form-control"
-                            value={trackCopy.seats}
-                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, seats: parseInt(e.target.value)}))}/>
+                            value={trackCopy.length}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, length: parseInt(e.target.value)}))}/>
                     </div>
                     <div className="col">
                         <select
                             className="form-control"
-                            value={trackCopy.semester}
-                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, semester: e.target.value}))}>
-                            <option>FALL</option>
-                            <option>SPRING</option>
-                            <option>SUMMER</option>
+                            value={trackCopy.genre}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, genre: e.target.value}))}>
+                            <option>HIP_HOP</option>
+                            <option>ROCK</option>
+                            <option>COUNTRY</option>
+                            <option>R&B</option>
+                            <option>JAZZ</option>
                         </select>
                     </div>
                     <div className="col">
                         <input
                             type="number"
                             className="form-control"
-                            value={trackCopy.year}
-                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, year: parseInt(e.target.value)}))}/>
+                            value={trackCopy.album}
+                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, album: parseInt(e.target.value)}))}/>
                     </div>
                     <div className="col">
                         <label>
@@ -48,13 +50,6 @@ const TrackEditorInline = ({track, deleteTrack, updateTrack}) => {
                             &nbsp;
                             Online
                         </label>
-                    </div>
-                    <div className="col">
-                        <input
-                            type="date"
-                            className="form-control"
-                            value={trackCopy.startDate}
-                            onChange={(e)=>setTrackCopy(trackCopy => ({...trackCopy, startDate: e.target.value}))}/>
                     </div>
                     <div className="col-2">
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
@@ -74,22 +69,22 @@ const TrackEditorInline = ({track, deleteTrack, updateTrack}) => {
                 <div className="row">
                     <div className="col">
                         <Link to={`/tracks/${trackCopy.id}`}>
-                            {trackCopy.name}
+                            {trackCopy.title}
                         </Link>
                     </div>
                     <div className="col">
                         <Link to={`/tracks/${trackCopy.id}`}>
-                            {trackCopy.seats}
+                            {trackCopy.length}
                         </Link>
                     </div>
                     <div className="col">
                         <Link to={`/tracks/${trackCopy.id}`}>
-                            {trackCopy.semester}
+                            {trackCopy.genre}
                         </Link>
                     </div>
                     <div className="col">
                         <Link to={`/tracks/${trackCopy.id}`}>
-                            {trackCopy.year}
+                            {trackCopy.album}
                         </Link>
                     </div>
                     <div className="col">

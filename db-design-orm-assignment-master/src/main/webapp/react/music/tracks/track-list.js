@@ -39,8 +39,8 @@ const TrackList = () => {
                 <li className="list-group-item">
                     <div className="row">
                         <div className="col">
-                            <input placeholder="Track Name"
-                                   title="Please enter a name for the track"
+                            <input placeholder="Track Title"
+                                   title="Please enter a title for the track"
                                    className="form-control"
                                    value={newTrack.title}
                                    onChange={(e) => setNewTrack(newTrack => ({...newTrack, name: e.target.value}))}/>

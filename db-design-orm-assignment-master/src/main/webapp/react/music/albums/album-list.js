@@ -13,7 +13,7 @@ const AlbumList = () => {
     const createAlbum = (album) =>
         albumService.createAlbum(album)
             .then(album => {
-                setNewAlbum({title:''})
+                setNewAlbum({name:''})
                 setAlbums(albums => ([...albums, album]))
             })
     const updateAlbum = (id, newAlbum) =>
@@ -32,9 +32,9 @@ const AlbumList = () => {
                 <li className="list-group-item">
                     <div className="row">
                         <div className="col">
-                            <input placeholder="Album Title"
-                                   title="Please enter a title for the album" className="form-control" value={newAlbum.title}
-                                   onChange={(e) => setNewAlbum(newAlbum => ({...newAlbum, title: e.target.value}))}/>
+                            <input placeholder="Album Name"
+                                   title="Please enter a name for the album" className="form-control" value={newAlbum.name}
+                                   onChange={(e) => setNewAlbum(newAlbum => ({...newAlbum, name: e.target.value}))}/>
                         </div>
                         <div className="col-3">
                             <i className="fas fa-plus fa-2x float-right" onClick={() => createAlbum(newAlbum)}></i>

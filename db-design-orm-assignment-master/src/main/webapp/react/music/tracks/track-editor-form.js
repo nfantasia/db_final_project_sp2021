@@ -30,32 +30,34 @@ const TrackEditorForm = () => {
                 className="form-control margin-bottom-10px"
                 readOnly={true}
                 value={track.id}/>
-            <label>Name</label>
+            <label>Title</label>
             <input
                 className="form-control margin-bottom-10px"
-                onChange={(e) => setTrack(track => ({...track, name: e.target.value}))}
-                value={track.name}/>
-            <label>Seats</label>
+                onChange={(e) => setTrack(track => ({...track, title: e.target.value}))}
+                value={track.title}/>
+            <label>Length</label>
             <input
                 type="number"
                 className="form-control margin-bottom-10px"
-                value={track.seats}
-                onChange={(e)=>setTrack(track => ({...track, seats: parseInt(e.target.value)}))}/>
-            <label>Semester</label>
+                value={track.length}
+                onChange={(e)=>setTrack(track => ({...track, length: parseInt(e.target.value)}))}/>
+            <label>Genre</label>
             <select
                 className="form-control margin-bottom-10px"
-                value={track.semester}
-                onChange={(e)=>setTrack(track => ({...track, semester: e.target.value}))}>
-                <option>FALL</option>
-                <option>SPRING</option>
-                <option>SUMMER</option>
+                value={track.genre}
+                onChange={(e)=>setTrack(track => ({...track, genre: e.target.value}))}>
+                <option>HIP-HOP</option>
+                <option>ROCK</option>
+                <option>Country</option>
+                <option>R&B</option>
+                <option>JAZZ</option>
             </select>
-            <label>Year</label>
+            <label>Album</label>
             <input
                 type="number"
                 className="form-control margin-bottom-10px"
-                value={track.year}
-                onChange={(e)=>setTrack(track => ({...track, year: parseInt(e.target.value)}))}/>
+                value={track.album}
+                onChange={(e)=>setTrack(track => ({...track, album: parseInt(e.target.value)}))}/>
             <label className="margin-bottom-10px">
             <input
                 type="checkbox"

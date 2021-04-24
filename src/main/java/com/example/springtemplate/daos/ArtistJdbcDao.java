@@ -9,12 +9,12 @@ import java.util.*;
 public class ArtistJdbcDao {
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String HOST = "localhost:3306";
-    static final String SCHEMA = "YOUR_SCHEMA";
+    static final String SCHEMA = "music";
     static final String CONFIG = "serverTimezone=UTC";
     static final String URL =
             "jdbc:mysql://"+HOST+"/"+SCHEMA+"?"+CONFIG;
-    static final String USERNAME = "YOUR_USERNAME";
-    static final String PASSWORD = "YOUR_PASSWORD";
+    static final String USERNAME = "cs3200";
+    static final String PASSWORD = "cs3200";
     
     static Connection connection = null;
     static PreparedStatement statement = null;

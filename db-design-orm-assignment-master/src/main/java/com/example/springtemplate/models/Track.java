@@ -12,6 +12,8 @@ public class Track {
     private Integer id;
     private String title;
     private Integer length;
+
+    @Enumerated(EnumType.STRING)
     private Genre genre;
 
     @ManyToOne

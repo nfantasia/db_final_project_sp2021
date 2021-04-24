@@ -3,6 +3,7 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Artist;
 
 import java.sql.*;
+import java.sql.Date;
 import java.util.*;
 
 public class ArtistJdbcDao {
@@ -72,7 +73,7 @@ public class ArtistJdbcDao {
         statement.setString(3, newArtist.getFirstName());
         statement.setString(4, newArtist.getLastName());
         statement.setString(5, newArtist.getEmail());
-        statement.setDate(5, newArtist.getDateOfBirth());
+        statement.setDate(5, (Date) newArtist.getDateOfBirth());
         statement.setInt(7, artistsId);
         rowsUpdated = statement.executeUpdate();
         closeConnection(connection);
@@ -90,7 +91,7 @@ public class ArtistJdbcDao {
                     resultSet.getString("password"),
                     resultSet.getString("first_name"),
                     resultSet.getString("last_name"),
-                    resultSet.getString("email")
+                    resultSet.getString("email"),
                     resultSet.getDate("date_of_birth")
             );
             artists.add(artist);
@@ -108,7 +109,7 @@ public class ArtistJdbcDao {
         statement.setString(3, artists.getFirstName());
         statement.setString(4, artists.getLastName());
         statement.setString(5, artists.getEmail());
-        statement.setDate(6, artists.getDateOfBirth());
+        statement.setDate(6, (Date) artists.getDateOfBirth());
         rowsUpdated = statement.executeUpdate();
         closeConnection(connection);
         return rowsUpdated;

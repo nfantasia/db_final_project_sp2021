@@ -1,6 +1,6 @@
 import trackService from "./track-service"
 
-const {useState, useEffect} = React
+const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
 const TrackEditorForm = () => {

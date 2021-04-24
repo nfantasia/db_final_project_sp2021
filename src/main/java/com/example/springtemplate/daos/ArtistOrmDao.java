@@ -34,12 +34,12 @@ public class ArtistOrmDao {
             @PathVariable("artistId") Integer id,
             @RequestBody() Artist newArtist) {
         Artist artist = this.findArtistById(id);
-        Artist.setFirstName(newArtist.getFirstName());
-        Artist.setLastName(newArtist.getLastName());
-        Artist.setUsername(newArtist.getUsername());
-        Artist.setPassword(newArtist.getPassword());
-        Artist.setEmail(newArtist.getEmail());
-        Artist.setDateOfBirth(newArtist.getDateOfBirth());
+        artist.setFirstName(newArtist.getFirstName());
+        artist.setLastName(newArtist.getLastName());
+        artist.setUsername(newArtist.getUsername());
+        artist.setPassword(newArtist.getPassword());
+        artist.setEmail(newArtist.getEmail());
+        artist.setDateOfBirth(newArtist.getDateOfBirth());
         return artistRepository.save(artist);
     }
 

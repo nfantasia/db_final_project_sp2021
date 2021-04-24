@@ -1,75 +1,75 @@
-import userService from "./user-service"
+import artistService from "./artist-service"
 const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
-const UserFormEditor = () => {
+const ArtistFormEditor = () => {
         const history = useHistory()
         const {id} = useParams()
-        const [user, setUser] = useState({})
+        const [artist, setArtist] = useState({})
         useEffect(() => {
                 if(id !== "new") {
-                        findUserById(id)
+                        findArtistById(id)
                 }
         }, []);
-        const findUserById = (id) =>
-            userService.findUserById(id)
+        const findArtistById = (id) =>
+            artistService.findUserById(id)
                 .then(user => setUser(user))
-        const deleteUser = (id) =>
-            userService.deleteUser(id)
+        const deleteArtist = (id) =>
+            artistService.deleteArtist(id)
                 .then(() => history.goBack())
-        const createUser = (user) =>
-            userService.createUser(user)
+        const createArtist = (artist) =>
+            artistService.createArtist(artist)
                 .then(() => history.goBack())
-        const updateUser = (id, newUser) =>
-            userService.updateUser(id, newUser)
+        const updateArtist = (id, newArtist) =>
+            artistService.updateArtist(id, newArtist)
                 .then(() => history.goBack())
         return (
         <div>
             <h2>User Editor</h2>
             <label>Id</label>
-            <input value={user.id}/><br/>
+            <input value={artist.id}/><br/>
             <label>First Name</label>
                 <input
                     onChange={(e) =>
-                        setUser(user =>
-                            ({...user, firstName: e.target.value}))}
+                        setArtist(artist =>
+                            ({...artist, firstName: e.target.value}))}
                     value={user.firstName}/><br/>
                 <label>Last Name</label>
                 <input
                     onChange={(e) =>
-                        setUser(user =>
-                            ({...user, lastName: e.target.value}))}
-                    value={user.lastName}/><br/>
+                        setArtist(artist =>
+                            ({...artist, lastName: e.target.value}))}
+                    value={artist.lastName}/><br/>
                 <label>Username</label>
                 <input
                     onChange={(e) =>
-                        setUser(user =>
-                            ({...user, username: e.target.value}))}
-                    value={user.username}/><br/>
+                        setArtist(artist =>
+                            ({...artist, username: e.target.value}))}
+                    value={artist.username}/><br/>
                 <label>Password</label>
                 <input
                     onChange={(e) =>
-                        setUser(user =>
-                            ({...user, password: e.target.value}))}
-                    value={user.password}/><br/>
+                        setArtist(artist =>
+                            ({...artist, password: e.target.value}))}
+                    value={artist.password}/><br/>
                 <button
                     onClick={() => {
                             history.goBack()}}>
                         Cancel
                 </button>
                 <button
-                    onClick={() => deleteUser(user.id)}>
+                    onClick={() => deleteUser(artist.id)}>
                         Delete
                 </button>
                 <button
-                    onClick={() => createUser(user)}>
+                    onClick={() => createUser(artist)}>
                         Create
                 </button>
                 <button
-                    onClick={() => updateUser(user.id, user)}>
+                    onClick={() => updateUser(artist.id, artist)}>
                         Save
                 </button>
         </div>
     )
 }
 
-export default UserFormEditor
+export default ArtistFormEditor

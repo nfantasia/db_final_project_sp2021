@@ -1,4 +1,4 @@
-import Users from "./users";
+import Artists from "./artists";
 
 const {HashRouter, Route} = window.ReactRouterDOM;
 
@@ -7,7 +7,7 @@ const App = () => {
         <div>
             <HashRouter>
                 <Route path="/" exact={true}>
-                    <Users/>
+                    <Artists/>
                 </Route>
             </HashRouter>
         </div>

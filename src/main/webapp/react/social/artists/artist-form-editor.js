@@ -11,8 +11,8 @@ const ArtistFormEditor = () => {
                 }
         }, []);
         const findArtistById = (id) =>
-            artistService.findUserById(id)
-                .then(user => setUser(user))
+            artistService.findArtistById(id)
+                .then(artist => setArtist(artist))
         const deleteArtist = (id) =>
             artistService.deleteArtist(id)
                 .then(() => history.goBack())
@@ -24,7 +24,7 @@ const ArtistFormEditor = () => {
                 .then(() => history.goBack())
         return (
         <div>
-            <h2>User Editor</h2>
+            <h2>Artist Editor</h2>
             <label>Id</label>
             <input value={artist.id}/><br/>
             <label>First Name</label>
@@ -32,7 +32,7 @@ const ArtistFormEditor = () => {
                     onChange={(e) =>
                         setArtist(artist =>
                             ({...artist, firstName: e.target.value}))}
-                    value={user.firstName}/><br/>
+                    value={artist.firstName}/><br/>
                 <label>Last Name</label>
                 <input
                     onChange={(e) =>
@@ -57,15 +57,15 @@ const ArtistFormEditor = () => {
                         Cancel
                 </button>
                 <button
-                    onClick={() => deleteUser(artist.id)}>
+                    onClick={() => deleteArtist(artist.id)}>
                         Delete
                 </button>
                 <button
-                    onClick={() => createUser(artist)}>
+                    onClick={() => createArtist(artist)}>
                         Create
                 </button>
                 <button
-                    onClick={() => updateUser(artist.id, artist)}>
+                    onClick={() => updateArtist(artist.id, artist)}>
                         Save
                 </button>
         </div>

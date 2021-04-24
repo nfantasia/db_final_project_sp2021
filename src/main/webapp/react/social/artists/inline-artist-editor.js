@@ -1,8 +1,8 @@
 const {useState, useEffect } = React;
 const {Link} = window.ReactRouterDOM;
 
-const InlineUserEditor = ({user, deleteUser, updateUser}) => {
-    const [userCopy, setUserCopy] = useState(user)
+const InlineArtistEditor = ({artist, deleteArtist, updateArtist}) => {
+    const [artistCopy, setArtistCopy] = useState(artist)
     const [editing, setEditing] = useState(false)
     return(
         <div>
@@ -12,23 +12,23 @@ const InlineUserEditor = ({user, deleteUser, updateUser}) => {
                     <div className="col">
                         <input
                             className="form-control"
-                            value={userCopy.firstName}
-                            onChange={(e)=>setUserCopy(userCopy => ({...userCopy, firstName: e.target.value}))}/>
+                            value={artistCopy.firstName}
+                            onChange={(e)=>setArtistCopy(artistCopy => ({...artistCopy, firstName: e.target.value}))}/>
                     </div>
                     <div className="col">
                         <input
                             className="form-control"
-                            value={userCopy.lastName}
-                            onChange={(e)=>setUserCopy(userCopy => ({...userCopy, lastName: e.target.value}))}/>
+                            value={artistCopy.lastName}
+                            onChange={(e)=>setArtistCopy(artistCopy => ({...artistCopy, lastName: e.target.value}))}/>
                     </div>
                     <div className="col">
                         <input
                             className="form-control"
-                            value={userCopy.username}
-                            onChange={(e)=>setUserCopy(userCopy => ({...userCopy, username: e.target.value}))}/>
+                            value={artistCopy.username}
+                            onChange={(e)=>setArtistCopy(artistCopy => ({...artistCopy, username: e.target.value}))}/>
                     </div>
                     <div className="col-1">
-                        <Link to={`/users/${userCopy.id}/blogs`}>
+                        <Link to={`/artists/${artistCopy.id}/albums`}>
                             Blogs
                         </Link>
                     </div>
@@ -36,12 +36,12 @@ const InlineUserEditor = ({user, deleteUser, updateUser}) => {
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
                                setEditing(false)
-                               updateUser(userCopy.id, userCopy)
+                               updateArtist(artistCopy.id, artistCopy)
                            }}></i>
                         <i className="fas fa-2x fa-undo float-right margin-left-10px"
                            onClick={() => setEditing(false)}></i>
                         <i className="fas fa-2x fa-trash float-right margin-left-10px"
-                           onClick={() => deleteUser(user.id)}></i>
+                           onClick={() => deleteArtist(artist.id)}></i>
                     </div>
                 </div>
             }
@@ -49,22 +49,22 @@ const InlineUserEditor = ({user, deleteUser, updateUser}) => {
                 !editing &&
                 <div className="row">
                     <div className="col">
-                        <Link to={`/users/${userCopy.id}`}>
-                            {userCopy.firstName}
+                        <Link to={`/artists/${artistCopy.id}`}>
+                            {artistCopy.firstName}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/users/${userCopy.id}`}>
-                            {userCopy.lastName}
+                        <Link to={`/artists/${artistCopy.id}`}>
+                            {artistCopy.lastName}
                         </Link>
                     </div>
                     <div className="col">
-                        <Link to={`/users/${userCopy.id}`}>
-                            {userCopy.username}
+                        <Link to={`/artists/${artistCopy.id}`}>
+                            {artistCopy.username}
                         </Link>
                     </div>
                     <div className="col-1">
-                        <Link to={`/users/${userCopy.id}/blogs`}>
+                        <Link to={`/artists/${artistCopy.id}/albums`}>
                             Blogs
                         </Link>
                     </div>
@@ -78,4 +78,4 @@ const InlineUserEditor = ({user, deleteUser, updateUser}) => {
     )
 }
 
-export default InlineUserEditor;
+export default InlineArtistEditor;

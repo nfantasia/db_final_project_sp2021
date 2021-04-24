@@ -14,5 +14,5 @@ public interface ArtistRepository
     public List<Artist> findAllArtists();
     @Query(value = "SELECT * FROM artists WHERE id=:artistId",
             nativeQuery = true)
-    public artist findArtistById(@Param("artistId") Integer id);
+    public Artist findArtistById(@Param("artistId") Integer id);
 }

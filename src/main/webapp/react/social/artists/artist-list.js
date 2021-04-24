@@ -1,4 +1,4 @@
-import userService from "./artist-service"
+import artistService from "./artist-service"
 const { useState, useEffect } = React;
 const {Link, useHistory} = window.ReactRouterDOM;
 
@@ -19,7 +19,7 @@ const ArtistList = () => {
             </button>
             <ul>
                 {
-                    users.map(artist =>
+                    artists.map(artist =>
                         <li key={artist.id}>
                             <Link to={`/artists/${artist.id}`}>
                             {artist.firstName},

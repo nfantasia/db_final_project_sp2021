@@ -14,7 +14,7 @@ public class ArtistJdbcDao {
     static final String URL =
             "jdbc:mysql://"+HOST+"/"+SCHEMA+"?"+CONFIG;
     static final String USERNAME = "cs3200";
-    static final String PASSWORD = "cs3200";
+    static final String PASSWORD = "cs3200cs3200";
     
     static Connection connection = null;
     static PreparedStatement statement = null;

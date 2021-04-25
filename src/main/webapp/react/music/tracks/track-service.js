@@ -1,8 +1,12 @@
-const ALBUM_URL = "http://localhost:8080/api/albums"
-const TRACK_URL = "http://localhost:8080/api/tracks"
+const ALBUMS_URL = "http://localhost:8080/api/albums"
+const TRACKS_URL = "http://localhost:8080/api/tracks"
+
+export const findAllTracks = () =>
+    fetch(TRACKS_URL)
+        .then(response => response.json())
 
 export const createTrackForAlbum = (albumId, track) =>
-    fetch(`${ALBUM_URL}/${albumId}/tracks`, {
+    fetch(`${ALBUMS_URL}/${albumId}/tracks`, {
         method: 'POST',
         body: JSON.stringify(track),
         headers: {'content-type': 'application/json'}
@@ -10,15 +14,15 @@ export const createTrackForAlbum = (albumId, track) =>
     .then(response => response.json())
 
 export const findTracksForAlbum = (albumId) =>
-    fetch(`${ALBUM_URL}/${albumId}/tracks`)
+    fetch(`${ALBUMS_URL}/${albumId}/tracks`)
         .then(response => response.json())
 
 export const findTrackById = (id) =>
-    fetch(`${TRACK_URL}/${id}`)
+    fetch(`${TRACKS_URL}/${id}`)
         .then(response => response.json())
 
 export const updateTrack = (id, track) =>
-    fetch(`${TRACK_URL}/${id}`, {
+    fetch(`${TRACKS_URL}/${id}`, {
         method: 'PUT',
         body: JSON.stringify(track),
         headers: {'content-type': 'application/json'}
@@ -26,11 +30,12 @@ export const updateTrack = (id, track) =>
     .then(response => response.json())
 
 const deleteTrack = (id) =>
-    fetch(`${TRACK_URL}/${id}`, {
+    fetch(`${TRACKS_URL}/${id}`, {
         method: "DELETE"
     })
 
 export default {
+    findAllTracks,
     createTrackForAlbum,
     findTracksForAlbum,
     findTrackById,

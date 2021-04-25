@@ -1,5 +1,5 @@
-import ArtistList from "./artists/artist-list";
-import ArtistFormEditor from "./artists/artist-form-editor";
+import ArtistList from "../music/artists/artist-list";
+import ArtistFormEditor from "../music/artists/artist-form-editor";
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
     return (

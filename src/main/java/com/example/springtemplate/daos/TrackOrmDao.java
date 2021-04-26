@@ -17,7 +17,7 @@ public class TrackOrmDao {
     @Autowired
     AlbumRepository albumRepository;
 
-    @PostMapping("/api/Tracks")
+    @PostMapping("/api/tracks")
     public Track createTrack(@RequestBody Track track) {
         return trackRepository.save(track);
     }

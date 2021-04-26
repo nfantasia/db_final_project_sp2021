@@ -17,12 +17,12 @@ public class ArtistOrmDao {
     public Artist createArtist(@RequestBody Artist Artist) {
         return artistRepository.save(Artist);
     }
-    
+
     @GetMapping("/api/artists")
     public List<Artist> findAllArtists() {
         return (List<Artist>) artistRepository.findAll();
     }
-    
+
     @GetMapping("/api/artists/{artistId}")
     public Artist findArtistById(
             @PathVariable("artistId") Integer id) {

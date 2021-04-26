@@ -1,6 +1,6 @@
-import TrackEditorInline from "./track-editor-inline";
-import trackService, {createTrackForAlbum} from "./track-service"
-const { useState, useEffect } = React;
+import trackService from "./track-service"
+
+const {useState, useEffect} = React;
 const {Link, useHistory} = window.ReactRouterDOM;
 
 const TrackList = () => {
@@ -12,7 +12,7 @@ const TrackList = () => {
     const findAllTracks = () =>
         trackService.findAllTracks()
             .then(tracks => setTracks(tracks))
-    return(
+    return (
         <div>
             <h2>Track List</h2>
             <button onClick={() => history.push("/tracks/new")}>

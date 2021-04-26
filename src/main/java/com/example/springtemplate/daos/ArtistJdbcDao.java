@@ -3,8 +3,8 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Artist;
 
 import java.sql.*;
-import java.sql.Date;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArtistJdbcDao {
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -12,10 +12,10 @@ public class ArtistJdbcDao {
     static final String SCHEMA = "music";
     static final String CONFIG = "serverTimezone=UTC";
     static final String URL =
-            "jdbc:mysql://"+HOST+"/"+SCHEMA+"?"+CONFIG;
+            "jdbc:mysql://" + HOST + "/" + SCHEMA + "?" + CONFIG;
     static final String USERNAME = "cs3200";
     static final String PASSWORD = "cs3200cs3200";
-    
+
     static Connection connection = null;
     static PreparedStatement statement = null;
     String CREATE_ARTIST = "INSERT INTO artists VALUES (null, ?, ?, ?, ?, ?, ?, null, null)";
@@ -24,23 +24,28 @@ public class ArtistJdbcDao {
     String DELETE_ARTIST = "DELETE FROM artists WHERE id=?";
     String UPDATE_ARTIST_PASSWORD = "UPDATE artists SET password=? WHERE id=?";
     String UPDATE_ARTIST = "UPDATE artists SET first_name=?, last_name=?, username=?, password=?, email=?, date_of_birth=? WHERE id=?";
-    
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        System.out.println("JDBC DAO");
+        ArtistJdbcDao dao = new ArtistJdbcDao();
+    }
+
     private Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName(DRIVER);
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
-    
+
     private void closeConnection(Connection connection) throws SQLException {
         connection.close();
     }
-    
+
     public Artist findArtistById(Integer id) throws SQLException, ClassNotFoundException {
         Artist artists = null;
         connection = getConnection();
         statement = connection.prepareStatement(FIND_ARTIST_BY_ID);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
-        if(resultSet.next()) {
+        if (resultSet.next()) {
             artists = new Artist(
                     resultSet.getString("username"),
                     resultSet.getString("password"),
@@ -53,7 +58,7 @@ public class ArtistJdbcDao {
         closeConnection(connection);
         return artists;
     }
-    
+
     public Integer deleteArtist(Integer artistsId) throws SQLException, ClassNotFoundException {
         Integer rowsDeleted = 0;
         connection = getConnection();
@@ -63,7 +68,7 @@ public class ArtistJdbcDao {
         closeConnection(connection);
         return rowsDeleted;
     }
-    
+
     public Integer updateArtist(Integer artistsId, Artist newArtist) throws SQLException, ClassNotFoundException {
         Integer rowsUpdated = 0;
         connection = getConnection();
@@ -79,7 +84,7 @@ public class ArtistJdbcDao {
         closeConnection(connection);
         return rowsUpdated;
     }
-    
+
     public List<Artist> findAllArtists() throws ClassNotFoundException, SQLException {
         List<Artist> artists = new ArrayList<Artist>();
         connection = getConnection();
@@ -99,6 +104,7 @@ public class ArtistJdbcDao {
         closeConnection(connection);
         return artists;
     }
+
     public Integer createArtist(Artist artists)
             throws ClassNotFoundException, SQLException {
         Integer rowsUpdated = 0;
@@ -113,9 +119,5 @@ public class ArtistJdbcDao {
         rowsUpdated = statement.executeUpdate();
         closeConnection(connection);
         return rowsUpdated;
-    }
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.out.println("JDBC DAO");
-        ArtistJdbcDao dao = new ArtistJdbcDao();
     }
 }

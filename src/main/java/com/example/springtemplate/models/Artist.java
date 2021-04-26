@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="artists")
+@Table(name = "artists")
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +21,18 @@ public class Artist {
     @OneToMany(mappedBy = "artist")
     @JsonIgnore
     private List<Album> albums;
+
+    public Artist(String username, String password, String first_name, String last_name, String email, Date dateOfBirth) {
+        this.username = username;
+        this.password = password;
+        this.firstName = first_name;
+        this.lastName = last_name;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Artist() {
+    }
 
     public Integer getId() {
         return id;
@@ -85,15 +97,4 @@ public class Artist {
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
     }
-
-    public Artist(String username, String password, String first_name, String last_name, String email, Date dateOfBirth) {
-        this.username = username;
-        this.password = password;
-        this.firstName = first_name;
-        this.lastName = last_name;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public Artist() {}
 }

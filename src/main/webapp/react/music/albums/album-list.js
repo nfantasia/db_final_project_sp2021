@@ -1,7 +1,6 @@
-import AlbumEditorInline from "./album-editor-inline";
 import albumService from "./album-service"
 
-const { useState, useEffect } = React;
+const {useState, useEffect} = React;
 const {Link, useHistory} = window.ReactRouterDOM;
 
 const AlbumList = () => {
@@ -13,7 +12,7 @@ const AlbumList = () => {
     const findAllAlbums = () =>
         albumService.findAllAlbums()
             .then(albums => setAlbums(albums))
-    return(
+    return (
         <div>
             <h2>Album List</h2>
             <button onClick={() => history.push("/albums/new")}>

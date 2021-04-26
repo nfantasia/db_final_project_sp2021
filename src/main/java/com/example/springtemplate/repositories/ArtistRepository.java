@@ -11,8 +11,9 @@ public interface ArtistRepository
         extends CrudRepository<Artist, Integer> {
     @Query(value = "SELECT * FROM artists",
             nativeQuery = true)
-    public List<Artist> findAllArtists();
+    List<Artist> findAllArtists();
+
     @Query(value = "SELECT * FROM artists WHERE id=:artistId",
             nativeQuery = true)
-    public Artist findArtistById(@Param("artistId") Integer id);
+    Artist findArtistById(@Param("artistId") Integer id);
 }

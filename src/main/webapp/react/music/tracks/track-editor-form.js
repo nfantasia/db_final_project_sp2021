@@ -19,7 +19,7 @@ const TrackEditorForm = () => {
     const deleteTrack = (id) =>
         trackService.deleteTrack(id)
             .then(() => history.goBack())
-    
+
     return (
         <div>
             <h2>
@@ -40,12 +40,12 @@ const TrackEditorForm = () => {
                 type="number"
                 className="form-control margin-bottom-10px"
                 value={track.length}
-                onChange={(e)=>setTrack(track => ({...track, length: parseInt(e.target.value)}))}/>
+                onChange={(e) => setTrack(track => ({...track, length: parseInt(e.target.value)}))}/>
             <label>Genre</label>
             <select
                 className="form-control margin-bottom-10px"
                 value={track.genre}
-                onChange={(e)=>setTrack(track => ({...track, genre: e.target.value}))}>
+                onChange={(e) => setTrack(track => ({...track, genre: e.target.value}))}>
                 <option>HIP-HOP</option>
                 <option>ROCK</option>
                 <option>Country</option>
@@ -57,26 +57,29 @@ const TrackEditorForm = () => {
                 type="number"
                 className="form-control margin-bottom-10px"
                 value={track.album}
-                onChange={(e)=>setTrack(track => ({...track, album: parseInt(e.target.value)}))}/>
+                onChange={(e) => setTrack(track => ({...track, album: parseInt(e.target.value)}))}/>
             <label className="margin-bottom-10px">
-            <input
-                type="checkbox"
-                checked={track.online}
-                onChange={(e)=>setTrack(track => ({...track, online: e.target.checked}))}/>
+                <input
+                    type="checkbox"
+                    checked={track.online}
+                    onChange={(e) => setTrack(track => ({...track, online: e.target.checked}))}/>
                 &nbsp;Online
             </label>
             <br/>
             <button
                 onClick={() => updateTrack(track.id, track)}
-                className="btn btn-success btn-block">Save</button>
+                className="btn btn-success btn-block">Save
+            </button>
             <button
                 onClick={() => {
                     history.goBack()
                 }}
-                className="btn btn-danger btn-block margin-left-10px">Cancel</button>
+                className="btn btn-danger btn-block margin-left-10px">Cancel
+            </button>
             <button
                 onClick={() => deleteTrack(track.id)}
-                className="btn btn-danger btn-block margin-left-10px">Delete</button>
+                className="btn btn-danger btn-block margin-left-10px">Delete
+            </button>
         </div>
     )
 }

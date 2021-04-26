@@ -1,11 +1,12 @@
 package com.example.springtemplate.daos;
 
-import com.example.springtemplate.models.Artist;
 import com.example.springtemplate.models.Album;
-import com.example.springtemplate.repositories.ArtistRepository;
+import com.example.springtemplate.models.Artist;
 import com.example.springtemplate.repositories.AlbumRepository;
+import com.example.springtemplate.repositories.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController

@@ -1,10 +1,10 @@
-const {useState, useEffect } = React;
+const {useState, useEffect} = React;
 const {Link} = window.ReactRouterDOM;
 
 const AlbumEditorInline = ({album, deleteAlbum, updateAlbum}) => {
     const [albumCopy, setAlbumCopy] = useState(album)
     const [editing, setEditing] = useState(false)
-    return(
+    return (
         <div>
             {
                 editing &&
@@ -13,7 +13,7 @@ const AlbumEditorInline = ({album, deleteAlbum, updateAlbum}) => {
                         <input
                             className="form-control"
                             value={albumCopy.title}
-                            onChange={(e)=>setAlbumCopy(albumCopy => ({...albumCopy, title: e.target.value}))}/>
+                            onChange={(e) => setAlbumCopy(albumCopy => ({...albumCopy, title: e.target.value}))}/>
                     </div>
                     <div className="col-1">
                         <Link to={`/albums/${albumCopy.id}/tracks`}>

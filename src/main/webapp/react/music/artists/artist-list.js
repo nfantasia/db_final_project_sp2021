@@ -1,5 +1,6 @@
 import artistService from "./artist-service"
-const { useState, useEffect } = React;
+
+const {useState, useEffect} = React;
 const {Link, useHistory} = window.ReactRouterDOM;
 
 const ArtistList = () => {
@@ -11,7 +12,7 @@ const ArtistList = () => {
     const findAllArtists = () =>
         artistService.findAllArtists()
             .then(artists => setArtists(artists))
-    return(
+    return (
         <div>
             <h2>Artist List</h2>
             <button onClick={() => history.push("/artists/new")}>
@@ -22,9 +23,9 @@ const ArtistList = () => {
                     artists.map(artist =>
                         <li key={artist.id}>
                             <Link to={`/artists/${artist.id}`}>
-                            {artist.firstName},
-                            {artist.lastName},
-                            {artist.username}
+                                {artist.firstName},
+                                {artist.lastName},
+                                {artist.username}
                             </Link>
                         </li>)
                 }

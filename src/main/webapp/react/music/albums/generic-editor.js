@@ -25,11 +25,11 @@ const AlbumEditor = (
             <ul className="list-group">
                 {
                     Object.keys(item).map((key, ndx) => {
-                        if(!schema[key]) return null
-                        return(
+                        if (!schema[key]) return null
+                        return (
                             <li>
                                 {
-                                    
+
                                 }
                                 <input
                                     className="form-control"

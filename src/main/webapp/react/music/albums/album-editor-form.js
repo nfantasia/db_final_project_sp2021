@@ -20,7 +20,7 @@ const AlbumEditorForm = () => {
     const deleteAlbum = (id) =>
         albumService.deleteAlbum(id)
             .then(() => history.goBack())
-    
+
     return (
         <div>
             <h2>
@@ -38,15 +38,18 @@ const AlbumEditorForm = () => {
                 value={album.name}/>
             <button
                 onClick={() => updateAlbum(album.id, album)}
-                className="btn btn-success btn-block">Save</button>
+                className="btn btn-success btn-block">Save
+            </button>
             <button
                 onClick={() => {
                     history.goBack()
                 }}
-                className="btn btn-danger btn-block margin-left-10px">Cancel</button>
+                className="btn btn-danger btn-block margin-left-10px">Cancel
+            </button>
             <button
                 onClick={() => deleteAlbum(album.id)}
-                className="btn btn-danger btn-block margin-left-10px">Delete</button>
+                className="btn btn-danger btn-block margin-left-10px">Delete
+            </button>
         </div>
     )
 }

@@ -1,10 +1,10 @@
-const {useState, useEffect } = React;
+const {useState, useEffect} = React;
 const {Link} = window.ReactRouterDOM;
 
 const InlineArtistEditor = ({artist, deleteArtist, updateArtist}) => {
     const [artistCopy, setArtistCopy] = useState(artist)
     const [editing, setEditing] = useState(false)
-    return(
+    return (
         <div>
             {
                 editing &&
@@ -13,19 +13,22 @@ const InlineArtistEditor = ({artist, deleteArtist, updateArtist}) => {
                         <input
                             className="form-control"
                             value={artistCopy.firstName}
-                            onChange={(e)=>setArtistCopy(artistCopy => ({...artistCopy, firstName: e.target.value}))}/>
+                            onChange={(e) => setArtistCopy(artistCopy => ({
+                                ...artistCopy,
+                                firstName: e.target.value
+                            }))}/>
                     </div>
                     <div className="col">
                         <input
                             className="form-control"
                             value={artistCopy.lastName}
-                            onChange={(e)=>setArtistCopy(artistCopy => ({...artistCopy, lastName: e.target.value}))}/>
+                            onChange={(e) => setArtistCopy(artistCopy => ({...artistCopy, lastName: e.target.value}))}/>
                     </div>
                     <div className="col">
                         <input
                             className="form-control"
                             value={artistCopy.username}
-                            onChange={(e)=>setArtistCopy(artistCopy => ({...artistCopy, username: e.target.value}))}/>
+                            onChange={(e) => setArtistCopy(artistCopy => ({...artistCopy, username: e.target.value}))}/>
                     </div>
                     <div className="col-1">
                         <Link to={`/artists/${artistCopy.id}/albums`}>

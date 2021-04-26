@@ -6,7 +6,7 @@ export const createAlbum = (album) =>
         body: JSON.stringify(album),
         headers: {'content-type': 'application/json'}
     })
-    .then(response => response.json())
+        .then(response => response.json())
 
 export const findAllAlbums = () =>
     fetch(ALBUM_URL)
@@ -22,7 +22,7 @@ export const updateAlbum = (id, album) =>
         body: JSON.stringify(album),
         headers: {'content-type': 'application/json'}
     })
-    .then(response => response.json())
+        .then(response => response.json())
 
 const deleteAlbum = (id) =>
     fetch(`${ALBUM_URL}/${id}`, {

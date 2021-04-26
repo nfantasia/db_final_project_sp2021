@@ -11,7 +11,7 @@ export const createTrackForAlbum = (albumId, track) =>
         body: JSON.stringify(track),
         headers: {'content-type': 'application/json'}
     })
-    .then(response => response.json())
+        .then(response => response.json())
 
 export const findTracksForAlbum = (albumId) =>
     fetch(`${ALBUMS_URL}/${albumId}/tracks`)
@@ -27,7 +27,7 @@ export const updateTrack = (id, track) =>
         body: JSON.stringify(track),
         headers: {'content-type': 'application/json'}
     })
-    .then(response => response.json())
+        .then(response => response.json())
 
 const deleteTrack = (id) =>
     fetch(`${TRACKS_URL}/${id}`, {

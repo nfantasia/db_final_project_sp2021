@@ -1,6 +1,6 @@
 # db_final_project_sp2021
 Database Final Project Spring 2021
-Team members: Nick Fantasia, William Victoria, Ming Yan from section 3200-04
+Team members: Nicholas Fantasia, William Victoria, Ming Yan from section 3200-04
 
 Problem statement - describe the problem that your project is trying to solve
 

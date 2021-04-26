@@ -208,5 +208,9 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.2" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.17" level="project" />
+    <orderEntry type="library" name="@babel/standalone" level="application" />
+    <orderEntry type="library" name="react" level="application" />
+    <orderEntry type="library" name="react-dom" level="application" />
+    <orderEntry type="library" name="react-router-dom" level="application" />
   </component>
 </module>

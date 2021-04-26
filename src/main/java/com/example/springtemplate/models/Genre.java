@@ -4,6 +4,6 @@ public enum Genre {
     COUNTRY,
     HIPHOP,
     JAZZ,
-    RNB,
+    BLUES,
     ROCK
 }

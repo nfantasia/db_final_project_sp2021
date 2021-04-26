@@ -25,7 +25,8 @@ const ArtistList = () => {
                             <Link to={`/artists/${artist.id}`}>
                                 {artist.firstName},
                                 {artist.lastName},
-                                {artist.username}
+                                {artist.username},
+                                {artist.email}
                             </Link>
                         </li>)
                 }
@@ -33,4 +34,5 @@ const ArtistList = () => {
         </div>
     )
 }
+
 export default ArtistList;

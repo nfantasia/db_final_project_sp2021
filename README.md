@@ -16,4 +16,6 @@ Some typical users that would use this solution would be music sharing and strea
 ## Domain Objects
 There are two domain objects implemented in this solution. One is “albums”, which maintains a many-to-one relationship with the “artists” model. The other one is “tracks”, which maintains a many-to-one relationship with the “albums” model. This can be taken as one artist can have numerous albums, and in each of the albums, there could be several tracks. Because of these relationships, the team has included a foreign key attribute in each of the domain objects. The foreign key in albums references the primary key in artists, and the foreign key in tracks references the primary key in albums. In addition, albums contains the following attributes: album name, release date, and number of songs. Tracks contain the track title, length, and genre. Genres is a portable enumerations class consiststing of the music genres ROCK, HIP-HOP, JAZZ, BLUES, and COUNTRY. The portable enumertion was used to describe the property that a track can have a "genre" of ROCK, HIP-HOP, JAZZ, BLUES, and COUNTRY.
 
-- The UML diagram for the project can be found at https://github.com/nfantasia/db_final_project_sp2021/blob/main/db_design_final_project_UML.pdf
+## Project UML Diagram
+- The UML diagram for the project can be found at:
+  ```https://github.com/nfantasia/db_final_project_sp2021/blob/main/db_design_final_project_UML.pdf```

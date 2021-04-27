@@ -4,21 +4,45 @@ const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
 const TrackEditorForm = () => {
-    const [track, setTrack] = useState({})
-    const {trackId} = useParams()
     const history = useHistory()
+    const {id} = useParams()
+    const [track, setTrack] = useState({})
     useEffect(() => {
-        findTrackById(trackId)
+        if (id !== "new") {
+            findTrackById(id)
+        }
     }, []);
     const findTrackById = (id) =>
         trackService.findTrackById(id)
             .then(track => setTrack(track))
+    const createTrackForAlbum = (albumId, newTrack) =>
+        trackService.createTrackForAlbum(albumId, newTrack)
+            .then(() => history.goBack())
     const updateTrack = (id, newTrack) =>
         trackService.updateTrack(id, newTrack)
             .then(() => history.goBack())
     const deleteTrack = (id) =>
         trackService.deleteTrack(id)
             .then(() => history.goBack())
+
+    let editButtons
+    if (id === "new") {
+        editButtons = <button
+            onClick={() => createTrackForAlbum(track.album, track)}
+            className="btn btn-success btn-block">Create
+        </button>
+    } else {
+        editButtons = <div>
+            <button
+                onClick={() => updateTrack(id, track)}
+                className="btn btn-success btn-block">Save
+            </button>
+            <button
+                onClick={() => deleteTrack(id)}
+                className="btn btn-danger btn-block margin-left-10px">Delete
+            </button>
+        </div>
+    }
 
     return (
         <div>
@@ -40,7 +64,8 @@ const TrackEditorForm = () => {
                 type="number"
                 className="form-control margin-bottom-10px"
                 value={track.length}
-                onChange={(e) => setTrack(track => ({...track, length: parseInt(e.target.value)}))}/>
+                onChange={(e) => setTrack(
+                    track => ({...track, length: parseInt(e.target.value)}))}/>
             <label>Genre</label>
             <select
                 className="form-control margin-bottom-10px"
@@ -48,8 +73,8 @@ const TrackEditorForm = () => {
                 onChange={(e) => setTrack(track => ({...track, genre: e.target.value}))}>
                 <option>HIP-HOP</option>
                 <option>ROCK</option>
-                <option>Country</option>
-                <option>R&B</option>
+                <option>COUNTRY</option>
+                <option>BLUES</option>
                 <option>JAZZ</option>
             </select>
             <label>Album</label>
@@ -57,28 +82,14 @@ const TrackEditorForm = () => {
                 type="number"
                 className="form-control margin-bottom-10px"
                 value={track.album}
-                onChange={(e) => setTrack(track => ({...track, album: parseInt(e.target.value)}))}/>
-            <label className="margin-bottom-10px">
-                <input
-                    type="checkbox"
-                    checked={track.online}
-                    onChange={(e) => setTrack(track => ({...track, online: e.target.checked}))}/>
-                &nbsp;Online
-            </label>
+                onChange={(e) => setTrack(track => ({...track, album: {id: e.target.value}}))}/>
             <br/>
-            <button
-                onClick={() => updateTrack(track.id, track)}
-                className="btn btn-success btn-block">Save
-            </button>
+            {editButtons}
             <button
                 onClick={() => {
                     history.goBack()
                 }}
                 className="btn btn-danger btn-block margin-left-10px">Cancel
-            </button>
-            <button
-                onClick={() => deleteTrack(track.id)}
-                className="btn btn-danger btn-block margin-left-10px">Delete
             </button>
         </div>
     )

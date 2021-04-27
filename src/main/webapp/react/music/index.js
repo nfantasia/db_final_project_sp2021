@@ -8,7 +8,6 @@ import ArtistFormEditor from "./artists/artist-form-editor";
 const {HashRouter, Route} = window.ReactRouterDOM;
 
 const App = () => {
-    console.log(window.ReactRouterDOM)
     return (
         <div className="container-fluid">
             <HashRouter>

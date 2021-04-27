@@ -4,8 +4,16 @@ import com.example.springtemplate.models.Album;
 import com.example.springtemplate.models.Track;
 import com.example.springtemplate.repositories.AlbumRepository;
 import com.example.springtemplate.repositories.TrackRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -33,9 +41,9 @@ public class TrackOrmDao {
         return trackRepository.save(track);
     }
 
-    @GetMapping("/api/albums/{cid}/tracks")
+    @GetMapping("/api/albums/{aid}/tracks")
     public List<Track> findTracksForAlbum(
-            @PathVariable("cid") Integer albumId) {
+            @PathVariable("aid") Integer albumId) {
         Album album = albumRepository.findById(albumId).get();
         return album.getTracks();
     }

@@ -18,4 +18,4 @@ There are two domain objects implemented in this solution. One is “albums”, 
 
 ## Project UML Diagram
 - The UML diagram for the project can be found at:
-  ```https://github.com/nfantasia/db_final_project_sp2021/blob/main/db_design_final_project_UML.pdf```
+  https://github.com/nfantasia/db_final_project_sp2021/blob/main/db_design_final_project_UML.pdf

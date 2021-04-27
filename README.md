@@ -4,8 +4,8 @@
 - William Victoria
 - Ming Yan
 
-## Problem Statement - describe the problem that your project is trying to solve
-
+## Problem Statement
+Increasingly, the music industry is becoming larger with more and more artists publishing new pieces of music. There are so many genres of music, different collections of albums, and a myriad of tracks that are published every week for fans to listen to. With a variety of artists publishing new music, it becomes much harder to find the collection of music associated with an artist or a genre of music. Fans of a particular artist might want to find similar artists or genres related to their favorite artist. In addition, there is a vast amount of music information that is constantly updated and needed to be referenced by both listeners and major music streaming and sharing platforms alike. Conventional methods of music collections have often been seen as vast, unreliable, and sometimes ambiguous for people to identify different artists and other attributes of music. As a result, there should be a solution that provides a reliable and unambiguous form of music identification, enabling both people and computers to have meaningful conversations regarding music.
 
 ## Solution Statement - describe the solution you implemented to solve the problem
 

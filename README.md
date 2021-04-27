@@ -1,4 +1,4 @@
-# Database Design Final Project Spring 2021 - CS 3200-04 (Professor Jose Annunziato)
+# Database Design Final Project Spring 2021 - CS 3200-04 Professor Jose Annunziato
 ## Team Members:
 - Nicholas Fantasia 
 - William Victoria

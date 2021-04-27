@@ -1,10 +1,11 @@
 # Database Design Final Project Spring 2021 - CS 3200-04
-## Team members:
+## Team Members:
 - Nicholas Fantasia 
 - William Victoria
 - Ming Yan
 
 ## Problem Statement - describe the problem that your project is trying to solve
+
 
 ## Solution Statement - describe the solution you implemented to solve the problem
 

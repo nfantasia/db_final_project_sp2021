@@ -21,14 +21,14 @@ const ArtistList = () => {
             <ul>
                 {
                     artists.map(artist =>
-                        <li key={artist.id}>
-                            <Link to={`/artists/${artist.id}`}>
-                                {artist.firstName},
-                                {artist.lastName},
-                                {artist.username},
-                                {artist.email}
-                            </Link>
-                        </li>)
+                                    <li key={artist.id}>
+                                        <Link to={`/artists/${artist.id}`}>
+                                            {artist.firstName},
+                                            {artist.lastName},
+                                            {artist.username},
+                                            {artist.email}
+                                        </Link>
+                                    </li>)
                 }
             </ul>
         </div>

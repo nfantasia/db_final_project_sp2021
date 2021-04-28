@@ -10,13 +10,22 @@ const AlbumEditorForm = () => {
     useEffect(() => {
         if (id !== "new") {
             findAlbumById(id)
+            // findTracksForAlbum(id)
         }
     }, []);
     const findAlbumById = (id) =>
         albumService.findAlbumById(id)
             .then(album => setAlbum(album))
+    // const findTracksForAlbum = (id) =>
+    //     trackService.findTracksForAlbum(id)
+    //         .then(tracks => {
+    //             setAlbum({tracks: tracks})
+    //         })
     const createAlbum = (album) =>
         albumService.createAlbum(album)
+            .then(() => history.goBack())
+    const createAlbumForArtist = (artistId, newAlbum) =>
+        albumService.createAlbumForArtist(artistId, newAlbum)
             .then(() => history.goBack())
     const updateAlbum = (id, newAlbum) =>
         albumService.updateAlbum(id, newAlbum)
@@ -26,20 +35,34 @@ const AlbumEditorForm = () => {
             .then(() => history.goBack())
 
     let editButtons
+    let editFields
     if (id === "new") {
         editButtons = <button
-            onClick={() => createAlbum(album)}
+            onClick={() => createAlbumForArtist(album.artist, album)}
             className="btn btn-success btn-block">Create
         </button>
+        editFields = <div>
+            <label>Artist ID</label>
+            <input
+                className="form-control"
+                onChange={(e) => setAlbum(album => ({...album, artist: e.target.value}))}
+                value={album.artist}/>
+        </div>
     } else {
         editButtons = <div>
+            <button
+                onClick={() => {
+                    history.push(`/artists/${album.artist.id}`)
+                }}
+                className="btn btn-primary btn-block">Go-to Artist
+            </button>
             <button
                 onClick={() => updateAlbum(id, album)}
                 className="btn btn-success btn-block">Save
             </button>
             <button
                 onClick={() => deleteAlbum(id)}
-                className="btn btn-danger btn-block margin-left-10px">Delete
+                className="btn btn-danger btn-block">Delete
             </button>
         </div>
     }
@@ -57,8 +80,8 @@ const AlbumEditorForm = () => {
             <label>Title</label>
             <input
                 className="form-control margin-bottom-10px"
-                onChange={(e) => setAlbum(album => ({...album, name: e.target.value}))}
-                value={album.name}/>
+                onChange={(e) => setAlbum(album => ({...album, albumName: e.target.value}))}
+                value={album.albumName}/>
             <label>Song Count</label>
             <input
                 type="number"
@@ -73,13 +96,14 @@ const AlbumEditorForm = () => {
                 value={album.releaseDate}
                 onChange={(e) => setAlbum(
                     album => ({...album, releaseDate: e.target.value}))}/>
+            {editFields}
             <br/>
             {editButtons}
             <button
                 onClick={() => {
-                    history.goBack()
+                    history.push('/')
                 }}
-                className="btn btn-danger btn-block margin-left-10px">Cancel
+                className="btn btn-primary btn-block">Home
             </button>
         </div>
     )

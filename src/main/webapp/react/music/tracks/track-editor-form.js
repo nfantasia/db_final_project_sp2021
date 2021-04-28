@@ -26,20 +26,34 @@ const TrackEditorForm = () => {
             .then(() => history.goBack())
 
     let editButtons
+    let editFields
     if (id === "new") {
         editButtons = <button
             onClick={() => createTrackForAlbum(track.album, track)}
             className="btn btn-success btn-block">Create
         </button>
+        editFields = <div>
+            <label>Album ID</label>
+            <input
+                className="form-control"
+                onChange={(e) => setTrack(track => ({...track, album: e.target.value}))}
+                value={track.album}/>
+        </div>
     } else {
         editButtons = <div>
+            <button
+                onClick={() => {
+                    history.push(`/albums/${track.album.id}`)
+                }}
+                className="btn btn-primary btn-block">Go-to Album
+            </button>
             <button
                 onClick={() => updateTrack(id, track)}
                 className="btn btn-success btn-block">Save
             </button>
             <button
                 onClick={() => deleteTrack(id)}
-                className="btn btn-danger btn-block margin-left-10px">Delete
+                className="btn btn-danger btn-block">Delete
             </button>
         </div>
     }
@@ -77,19 +91,14 @@ const TrackEditorForm = () => {
                 <option>BLUES</option>
                 <option>JAZZ</option>
             </select>
-            <label>Album</label>
-            <input
-                type="number"
-                className="form-control margin-bottom-10px"
-                value={track.album}
-                onChange={(e) => setTrack(track => ({...track, album: {id: e.target.value}}))}/>
+            {editFields}
             <br/>
             {editButtons}
             <button
                 onClick={() => {
-                    history.goBack()
+                    history.push('/')
                 }}
-                className="btn btn-danger btn-block margin-left-10px">Cancel
+                className="btn btn-primary btn-block">Home
             </button>
         </div>
     )

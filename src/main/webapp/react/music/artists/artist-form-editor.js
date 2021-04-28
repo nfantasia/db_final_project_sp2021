@@ -96,11 +96,10 @@ const ArtistFormEditor = () => {
             <br/>
             {editButtons}
             <button
-                className="btn btn-danger btn-block margin-left-10px"
                 onClick={() => {
-                    history.goBack()
-                }}>
-                Cancel
+                    history.push('/')
+                }}
+                className="btn btn-primary btn-block">Home
             </button>
         </div>
     )

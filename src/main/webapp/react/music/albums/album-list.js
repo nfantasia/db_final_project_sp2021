@@ -21,11 +21,11 @@ const AlbumList = () => {
             <ul>
                 {
                     albums.map(album =>
-                        <li key={album.id}>
-                            <Link to={`/albums/${album.id}`}>
-                                {album.albumName}
-                            </Link>
-                        </li>)
+                                   <li key={album.id}>
+                                       <Link to={`/albums/${album.id}`}>
+                                           {album.albumName}
+                                       </Link>
+                                   </li>)
                 }
             </ul>
         </div>

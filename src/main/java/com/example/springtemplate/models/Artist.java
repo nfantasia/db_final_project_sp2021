@@ -25,6 +25,7 @@ public class Artist {
     private String email;
     private Date dateOfBirth;
     @OneToMany(mappedBy = "artist")
+//    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @JsonIgnore
     private List<Album> albums;
 

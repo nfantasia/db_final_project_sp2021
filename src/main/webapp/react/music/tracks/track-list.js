@@ -21,13 +21,13 @@ const TrackList = () => {
             <ul>
                 {
                     tracks.map(track =>
-                        <li key={track.id}>
-                            <Link to={`/tracks/${track.id}`}>
-                                {track.title},
-                                {track.length},
-                                {track.genre}
-                            </Link>
-                        </li>)
+                                   <li key={track.id}>
+                                       <Link to={`/tracks/${track.id}`}>
+                                           {track.title},
+                                           {track.length},
+                                           {track.genre}
+                                       </Link>
+                                   </li>)
                 }
             </ul>
         </div>
